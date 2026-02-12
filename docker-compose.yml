@@ -1,0 +1,16 @@
+version: "3.9"
+
+services:
+  app:
+    image: golang:1.22
+    working_dir: /app
+    volumes:
+      - ./:/app
+    command: go run ./cmd/spectra
+    env_file:
+      - .env
+    environment:
+      - PORT=${PORT:-8080}
+    ports:
+      - "${PORT:-8080}:${PORT:-8080}"
+
